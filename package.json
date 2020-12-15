@@ -1,0 +1,32 @@
+{
+  "name": "dendrochronologist",
+  "version": "0.0.0",
+  "description": "A CLI for versioning and publishing npm packages in a monorepo",
+  "author": "Daniel Stockman",
+  "license": "Parity-7.0.0",
+  "homepage": "https://github.com/dendrochronologist/cli#readme",
+  "keywords": [
+    "monorepo",
+    "version",
+    "publish",
+    "cli"
+  ],
+  "bugs": {
+    "url": "https://github.com/dendrochronologist/cli/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dendrochronologist/cli.git"
+  },
+  "bin": {
+    "dendrochronologist": "TODO"
+  },
+  "main": "TODO",
+  "scripts": {
+    "test": "TODO"
+  },
+  "devDependencies": {
+  },
+  "dependencies": {
+  }
+}
