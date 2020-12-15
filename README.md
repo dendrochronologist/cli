@@ -29,3 +29,7 @@ From root manifest `scripts` (preferred):
   }
 }
 ```
+
+## License
+
+The code in this repository is covered by the [Parity Public License](https://paritylicense.com), a strong copyleft license.
