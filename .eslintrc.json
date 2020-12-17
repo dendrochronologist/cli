@@ -55,6 +55,7 @@
   "settings": {
     "node": {
       "allowModules": [
+        "@wessberg/rollup-plugin-ts",
         "tap"
       ]
     }

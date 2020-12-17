@@ -21,5 +21,9 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ES2019",
-  }
+  },
+  "include": [
+    "src",
+    "test"
+  ]
 }
