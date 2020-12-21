@@ -1,8 +1,8 @@
-import { chmodSync } from 'fs';
-import { builtinModules } from 'module';
-import { dirname, resolve } from 'path';
-import ts from '@wessberg/rollup-plugin-ts';
-import pkg from './package.json';
+const { chmodSync } = require('fs');
+const { builtinModules } = require('module');
+const { dirname, resolve } = require('path');
+const ts = require('@wessberg/rollup-plugin-ts');
+const pkg = require('./package.json');
 
 const external = Object.freeze([
   ...builtinModules,
@@ -34,7 +34,7 @@ function translateExtensions() {
   };
 }
 
-export default [
+module.exports = [
   {
     input: 'src/api.ts',
     output: [
@@ -48,7 +48,7 @@ export default [
     input: 'src/cli.ts',
     output: [
       {
-        format: 'esm',
+        format: 'cjs',
         file: pkg.bin.dendrochronologist,
         exports: 'none',
         banner: '#!/usr/bin/env node\n',

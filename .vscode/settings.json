@@ -4,6 +4,6 @@
     "source.fixAll.eslint": true
   },
   "eslint.format.enable": true,
-  "typescript.preferences.importModuleSpecifierEnding": "js",
+  "typescript.preferences.importModuleSpecifierEnding": "minimal",
   "typescript.tsdk": "./node_modules/typescript/lib"
 }

@@ -1,4 +1,4 @@
-import { run } from './api.js';
+import { run } from './api';
 
 console.log(process.argv.slice(2));
 

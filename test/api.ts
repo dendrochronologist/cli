@@ -1,5 +1,5 @@
 import t from 'tap';
-import { run } from '../src/api.js';
+import { run } from '../src/api';
 
 t.test('run()', (t): void => {
   const logged: string[] = [];

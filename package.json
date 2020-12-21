@@ -19,22 +19,21 @@
     "url": "git+https://github.com/dendrochronologist/cli.git"
   },
   "bin": {
-    "dendrochronologist": "./dist/esm/cli.js"
+    "dendrochronologist": "./dist/cli.js"
   },
   "engines": {
     "node": "^12.17.0 || ^14"
   },
   "exports": {
     ".": {
-      "import": "./dist/esm/api.js",
+      "import": "./dist/esm/api.mjs",
       "default": "./dist/cjs/api.cjs"
     }
   },
   "files": [
     "dist"
   ],
-  "main": "./dist/cjs/index.cjs",
-  "type": "module",
+  "main": "./dist/cjs/api.cjs",
   "prettier": {
     "arrowParens": "always",
     "singleQuote": true
