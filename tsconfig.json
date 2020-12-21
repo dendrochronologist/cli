@@ -12,6 +12,7 @@
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "forceConsistentCasingInFileNames": true,
+    "importsNotUsedAsValues": "error",
     "isolatedModules": true,
     "lib": [
       "ES2019"
