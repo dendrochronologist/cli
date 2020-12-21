@@ -64,9 +64,10 @@
     "prepare": "npm run build",
     "prepack": "rm -rf dist && npm run build",
     "build": "rollup -c",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint . --ignore-path=.gitignore",
     "test": "c8 tap",
-    "posttest": "npm run lint"
+    "posttest": "npm run typecheck && npm run lint"
   },
   "devDependencies": {
     "@types/node": "^14.14.14",
