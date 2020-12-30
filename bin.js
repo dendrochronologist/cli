@@ -8,8 +8,10 @@ if (process.env.DENDROCHRONOLOGIST_TEST_RUNNER) {
   require('ts-node').register({ transpileOnly: true });
   cli = require('./src/cli');
   /* eslint-enable node/no-unpublished-require */
-  /* c8 ignore next 3 */
+  /* c8 ignore next 5 */
 } else {
+  // @ts-expect-error (untyped module)
+  require('v8-compile-cache');
   cli = require('./dist/cli.js');
 }
 
