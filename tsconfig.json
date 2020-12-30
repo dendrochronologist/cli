@@ -9,7 +9,9 @@
   },
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
+    "allowJs": true,
     "allowSyntheticDefaultImports": true,
+    "checkJs": true,
     "declaration": true,
     "forceConsistentCasingInFileNames": true,
     "importsNotUsedAsValues": "error",
@@ -19,11 +21,14 @@
     ],
     "module": "ESNext",
     "moduleResolution": "node",
+    // avoid warning about Rollup-built JS files
+    "outDir": "dist",
     "skipLibCheck": true,
     "strict": true,
     "target": "ES2019",
   },
   "include": [
+    "bin.js",
     "src",
     "test"
   ]

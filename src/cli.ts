@@ -1,5 +1,7 @@
 import { run } from './api';
 
-console.log(process.argv.slice(2));
+export function execute(argv: string[]) {
+  console.log(argv);
 
-run({ logger: console.error });
+  run({ logger: console.error });
+}

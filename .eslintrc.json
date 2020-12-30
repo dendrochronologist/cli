@@ -58,6 +58,11 @@
       "allowModules": [
         "@wessberg/rollup-plugin-ts",
         "tap"
+      ],
+      "tryExtensions": [
+        ".ts",
+        ".js",
+        ".json"
       ]
     }
   }
