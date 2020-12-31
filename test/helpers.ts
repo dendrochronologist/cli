@@ -12,8 +12,9 @@ export async function run(
 ): Promise<{
   stdout: string;
   stderr: string;
+  exitCode: number | null;
 }> {
-  return await execFile(node, [bin].concat(args), {
+  const proc = execFile(node, [bin].concat(args), {
     encoding: 'utf8',
     ...options,
     env: {
@@ -23,4 +24,19 @@ export async function run(
       LANG: 'en_US.UTF-8',
     },
   });
+
+  return proc.then(
+    (result) => {
+      return {
+        ...result,
+        exitCode: proc.child.exitCode,
+      };
+    },
+    (error) => {
+      return {
+        ...error,
+        exitCode: proc.child.exitCode,
+      };
+    }
+  );
 }
