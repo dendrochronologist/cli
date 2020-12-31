@@ -15,4 +15,4 @@ if (process.env.DENDROCHRONOLOGIST_TEST_RUNNER) {
   cli = require('./dist/cli.js');
 }
 
-cli.execute(process.argv.slice(2));
+cli.execute(process.argv);

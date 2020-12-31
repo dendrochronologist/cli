@@ -5,6 +5,9 @@ const pkg = require('./package.json');
 const external = Object.freeze([
   ...builtinModules,
   ...Object.keys(pkg.dependencies),
+  // explicit subpath import allowlist (this should be very short)
+  'yargs/yargs',
+  'yargs/helpers',
 ]);
 
 module.exports = {
