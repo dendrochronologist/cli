@@ -41,20 +41,22 @@ declare global {
   }
 }
 
+export const levels: ReadonlyArray<LogLevels> = [
+  'silly',
+  'verbose',
+  'info',
+  'timing',
+  'http',
+  'notice',
+  'warn',
+  'error',
+  'silent',
+] as const;
+
 export function processLogger() {
   const logger = {} as MinimalLogger;
 
-  for (const level of [
-    'silly',
-    'verbose',
-    'info',
-    'timing',
-    'http',
-    'notice',
-    'warn',
-    'error',
-    'silent',
-  ] as const) {
+  for (const level of levels) {
     logger[level] = (prefix: string, message: string, ...args: unknown[]) => {
       process.emit('log', level, prefix, message, ...args);
     };

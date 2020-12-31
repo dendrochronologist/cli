@@ -8,6 +8,28 @@ export function execute(rawArgv: typeof process.argv) {
   const cli = yargs(hideBin(rawArgv))
     .scriptName('dendrochronologist')
     .usage('$0', 'Version and publish npm packages in a monorepo.')
+    .option('quiet', {
+      type: 'boolean',
+      describe: 'Only log errors and warnings',
+    })
+    .option('verbose', {
+      type: 'boolean',
+      describe: 'Log many details otherwise obscured',
+    })
+    .option('loglevel', {
+      choices: levels.slice().reverse(),
+      describe: 'Choose the level of logs explicitly',
+      defaultDescription: '"info"',
+    })
+    .check((argv) => {
+      if (argv.quiet) {
+        argv.loglevel = 'warn';
+      }
+      if (argv.verbose) {
+        argv.loglevel = 'verbose';
+      }
+      return true;
+    })
     .alias('h', 'help')
     .alias('v', 'version');
 
@@ -17,6 +39,7 @@ export function execute(rawArgv: typeof process.argv) {
   const argv = cli.parse();
 
   npmlog.heading = argv.$0;
+  npmlog.level = argv.loglevel || 'info';
   npmlog.pause();
   npmlog.verbose('argv', '%O', argv);
 
