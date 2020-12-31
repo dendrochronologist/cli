@@ -1,7 +1,10 @@
+import { processLogger } from './process-logger';
+import type { MinimalLogger } from './process-logger';
+
 interface RunOptions {
-  logger: typeof console.error;
+  logger?: MinimalLogger;
 }
 
-export function run({ logger }: RunOptions): void {
-  logger('Count those tree rings!');
+export function run({ logger = processLogger() }: RunOptions): void {
+  logger.info('run', 'Count those tree rings!');
 }
