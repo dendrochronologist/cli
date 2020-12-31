@@ -6,5 +6,6 @@ interface RunOptions {
 }
 
 export function run({ logger = processLogger() }: RunOptions): void {
+  logger.resume();
   logger.info('run', 'Count those tree rings!');
 }

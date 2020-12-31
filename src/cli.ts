@@ -17,6 +17,7 @@ export function execute(rawArgv: typeof process.argv) {
   const argv = cli.parse();
 
   npmlog.heading = argv.$0;
+  npmlog.pause();
   npmlog.verbose('argv', '%O', argv);
 
   run({
