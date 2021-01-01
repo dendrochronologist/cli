@@ -1,11 +1,13 @@
 import { builtinModules } from 'module';
 import ts from '@wessberg/rollup-plugin-ts';
-import { dependencies } from './package.json';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const pkg = require('./package.json');
 
 /** @type {import('rollup').ExternalOption} */
 const external = [
   ...builtinModules,
-  ...Object.keys(dependencies),
+  ...Object.keys(pkg.dependencies),
   // explicit subpath import allowlist (this should be very short)
   'yargs/yargs',
   'yargs/helpers',

@@ -20,6 +20,12 @@
   },
   "overrides": [
     {
+      "files": "*.mjs",
+      "parserOptions": {
+        "ecmaVersion": 2020
+      }
+    },
+    {
       "files": [
         "**/*.ts",
         "**/*.tsx"
