@@ -30,7 +30,7 @@
   },
   "include": [
     "bin.js",
-    "rollup.config.js",
+    "rollup.config.mjs",
     "src",
     "test"
   ]
