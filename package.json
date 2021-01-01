@@ -36,7 +36,6 @@
   ],
   "main": "./dist/api.js",
   "module": "./dist/api.mjs",
-  "types": "./dist/api.d.ts",
   "prettier": {
     "arrowParens": "always",
     "singleQuote": true
