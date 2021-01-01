@@ -24,6 +24,8 @@ module.exports = {
       dir: 'dist',
       format: 'esm',
       entryFileNames: '[name].mjs',
+      chunkFileNames: '[name]-[hash].mjs',
+      minifyInternalExports: false,
     },
   ],
   // @ts-expect-error ("default export" broken from CJS)
