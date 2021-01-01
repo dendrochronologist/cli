@@ -23,12 +23,14 @@
     "moduleResolution": "node",
     // avoid warning about Rollup-built JS files
     "outDir": "dist",
+    "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
     "target": "ES2019",
   },
   "include": [
     "bin.js",
+    "rollup.config.js",
     "src",
     "test"
   ]
