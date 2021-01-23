@@ -1,7 +1,8 @@
 import { processLogger } from './process-logger';
 import type { MinimalLogger } from './process-logger';
+import type { ParsedConfig } from './cli';
 
-interface RunOptions {
+interface RunOptions extends Partial<ParsedConfig> {
   logger?: MinimalLogger;
 }
 

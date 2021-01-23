@@ -4,8 +4,8 @@ import npmlog from 'npmlog';
 import { run } from './api';
 import { levels } from './process-logger';
 
-export function execute(rawArgv: typeof process.argv) {
-  const cli = yargs(hideBin(rawArgv))
+function configure(slicedArgv: string[]) {
+  return yargs(slicedArgv)
     .scriptName('dendrochronologist')
     .usage('$0', 'Version and publish npm packages in a monorepo.')
     .option('quiet', {
@@ -35,6 +35,10 @@ export function execute(rawArgv: typeof process.argv) {
     }, true)
     .alias('h', 'help')
     .alias('v', 'version');
+}
+
+export function execute(rawArgv: typeof process.argv) {
+  const cli = configure(hideBin(rawArgv));
 
   // TODO: maybe spread out when hidden options are shown?
   cli.wrap(/* cli.terminalWidth() */ 80);
@@ -51,3 +55,18 @@ export function execute(rawArgv: typeof process.argv) {
     logger: npmlog,
   });
 }
+
+// Remove index signature from an object with explicit keys
+// https://github.com/Microsoft/TypeScript/issues/25987#issuecomment-408339599
+type KnownKeys<T> = {
+  [K in keyof T]: string extends K ? never : number extends K ? never : K;
+} extends { [_ in keyof T]: infer U }
+  ? U
+  : never;
+
+type ConfigureArgv = ReturnType<typeof configure>['argv'];
+type YargsMetaKeys = '$0' | '_';
+type ApiConfigKeys = Exclude<KnownKeys<ConfigureArgv>, YargsMetaKeys>;
+
+/** The parsed config object without yargs-specific keys that would only confuse derived interfaces */
+export type ParsedConfig = Pick<ConfigureArgv, ApiConfigKeys>;
