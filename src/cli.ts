@@ -11,15 +11,18 @@ export function execute(rawArgv: typeof process.argv) {
     .option('quiet', {
       type: 'boolean',
       describe: 'Only log errors and warnings',
+      global: true,
     })
     .option('verbose', {
       type: 'boolean',
       describe: 'Log many details otherwise obscured',
+      global: true,
     })
     .option('loglevel', {
       choices: levels.slice().reverse(),
       describe: 'Choose the level of logs explicitly',
       defaultDescription: '"info"',
+      global: true,
     })
     .check((argv) => {
       if (argv.quiet) {
@@ -29,7 +32,7 @@ export function execute(rawArgv: typeof process.argv) {
         argv.loglevel = 'verbose';
       }
       return true;
-    })
+    }, true)
     .alias('h', 'help')
     .alias('v', 'version');
 
