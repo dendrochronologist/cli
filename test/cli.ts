@@ -1,4 +1,5 @@
 import t from 'tap';
+import path from 'path';
 import { run } from './helpers';
 
 t.test('cli', async (t) => {
@@ -26,4 +27,9 @@ t.test('--loglevel=poop', async (t) => {
   const { stderr, exitCode } = await run(['--loglevel=poop']);
   t.is(exitCode, 1);
   t.match(stderr, 'Invalid values:');
+});
+
+t.test('--cwd', async (t) => {
+  const { stderr } = await run(['--loglevel=silly', '--cwd=custom']);
+  t.match(stderr, `cwd = "${path.resolve('custom')}"`);
 });

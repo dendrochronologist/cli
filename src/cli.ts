@@ -8,6 +8,13 @@ function configure(slicedArgv: string[]) {
   return yargs(slicedArgv)
     .scriptName('dendrochronologist')
     .usage('$0', 'Version and publish npm packages in a monorepo.')
+    .option('cwd', {
+      type: 'string',
+      describe: 'Current working directory',
+      defaultDescription: 'process.cwd()',
+      global: true,
+      hidden: true,
+    })
     .option('quiet', {
       type: 'boolean',
       describe: 'Only log errors and warnings',
