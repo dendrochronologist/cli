@@ -20,6 +20,21 @@ t.test('run()', (t): void => {
   run({});
   t.is(logged.get('resume')?.length, 1, 'logger.resume()');
   t.is(logged.get('info')![0], 'Count those tree rings!');
-  t.is(logged.get('silly')![0], `cwd = "${path.resolve('.')}"`);
+  t.is(
+    logged.get('silly')![0],
+    `cwd = "${path.resolve('.')}"`,
+    'cwd is defaulted'
+  );
+  t.done();
+});
+
+t.test('run({ cwd })', (t) => {
+  const cwd = 'custom';
+  run({ cwd });
+  t.is(
+    logged.get('silly')![0],
+    `cwd = "${path.resolve(cwd)}"`,
+    'custom options.cwd'
+  );
   t.done();
 });
