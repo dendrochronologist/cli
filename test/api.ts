@@ -17,15 +17,11 @@ t.afterEach((done) => {
 });
 
 t.test('run()', async (t) => {
-  await run({});
+  const tree = await run({});
+  t.is(tree.package.name, 'dendrochronologist');
+  t.is(tree.path, resolve('.'), 'cwd is defaulted to process.cwd()');
   t.is(logged.get('resume')?.length, 1, 'logger.resume()');
   t.is(logged.get('info')![0], 'Count those tree rings!');
-  t.is(
-    logged.get('silly')![0],
-    `cwd = "${resolve('.')}"`,
-    'cwd is defaulted to process.cwd()'
-  );
-  t.done();
 });
 
 t.test('run({ cwd })', async (t) => {
@@ -35,11 +31,7 @@ t.test('run({ cwd })', async (t) => {
       name: 'explicit-root',
     }),
   });
-  await run({ cwd });
-  t.is(
-    logged.get('silly')![0],
-    `cwd = "${cwd}"`,
-    'cwd is customized by options.cwd'
-  );
-  t.done();
+  const tree = await run({ cwd });
+  t.is(tree.package.name, 'explicit-root');
+  t.is(tree.path, cwd, 'cwd is customized by options.cwd');
 });
