@@ -8,7 +8,7 @@ const execFile = util.promisify(cp.execFile);
 
 export async function run(
   args: string[] = [],
-  options?: cp.ExecFileOptionsWithStringEncoding
+  options?: cp.ExecFileOptions
 ): Promise<{
   stdout: string;
   stderr: string;
