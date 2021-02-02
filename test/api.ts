@@ -1,5 +1,5 @@
 import t from 'tap';
-import path from 'path';
+import { resolve } from 'path';
 import util from 'util';
 import { run } from '../src/api';
 
@@ -22,19 +22,24 @@ t.test('run()', async (t) => {
   t.is(logged.get('info')![0], 'Count those tree rings!');
   t.is(
     logged.get('silly')![0],
-    `cwd = "${path.resolve('.')}"`,
-    'cwd is defaulted'
+    `cwd = "${resolve('.')}"`,
+    'cwd is defaulted to process.cwd()'
   );
   t.done();
 });
 
 t.test('run({ cwd })', async (t) => {
-  const cwd = 'custom';
+  // @ts-expect-error (yes t.testdir exists)
+  const cwd = t.testdir({
+    'package.json': JSON.stringify({
+      name: 'explicit-root',
+    }),
+  });
   await run({ cwd });
   t.is(
     logged.get('silly')![0],
-    `cwd = "${path.resolve(cwd)}"`,
-    'custom options.cwd'
+    `cwd = "${cwd}"`,
+    'cwd is customized by options.cwd'
   );
   t.done();
 });

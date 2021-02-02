@@ -1,6 +1,15 @@
 import t from 'tap';
-import path from 'path';
 import { run } from './helpers';
+
+// a common implicit CWD to avoid root manifest pollution
+process.chdir(
+  // @ts-expect-error (yes t.testdir exists)
+  t.testdir({
+    'package.json': JSON.stringify({
+      name: 'test-cli',
+    }),
+  }) as string
+);
 
 t.test('cli', async (t) => {
   const { stderr, exitCode } = await run();
@@ -30,6 +39,13 @@ t.test('--loglevel=poop', async (t) => {
 });
 
 t.test('--cwd', async (t) => {
-  const { stderr } = await run(['--loglevel=silly', '--cwd=custom']);
-  t.match(stderr, `cwd = "${path.resolve('custom')}"`);
+  // @ts-expect-error (yes t.testdir exists)
+  const cwd = t.testdir({
+    'package.json': JSON.stringify({
+      name: 'custom-cwd',
+    }),
+  }) as string;
+
+  const { stderr } = await run(['--loglevel=silly', '--cwd', cwd]);
+  t.match(stderr, `cwd = "${cwd}"`);
 });
