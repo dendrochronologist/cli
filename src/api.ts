@@ -7,10 +7,10 @@ interface RunOptions extends Partial<ParsedConfig> {
   logger?: MinimalLogger;
 }
 
-export function run({
+export async function run({
   logger = processLogger(),
   ...options
-}: RunOptions): void {
+}: RunOptions): Promise<void> {
   logger.resume();
   logger.info('run', 'Count those tree rings!');
 

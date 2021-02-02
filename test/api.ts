@@ -16,8 +16,8 @@ t.afterEach((done) => {
   done();
 });
 
-t.test('run()', (t): void => {
-  run({});
+t.test('run()', async (t) => {
+  await run({});
   t.is(logged.get('resume')?.length, 1, 'logger.resume()');
   t.is(logged.get('info')![0], 'Count those tree rings!');
   t.is(
@@ -28,9 +28,9 @@ t.test('run()', (t): void => {
   t.done();
 });
 
-t.test('run({ cwd })', (t) => {
+t.test('run({ cwd })', async (t) => {
   const cwd = 'custom';
-  run({ cwd });
+  await run({ cwd });
   t.is(
     logged.get('silly')![0],
     `cwd = "${path.resolve(cwd)}"`,
