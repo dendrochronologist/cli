@@ -1,3 +1,4 @@
+import os from 'os';
 import t from 'tap';
 import { run } from './helpers';
 
@@ -10,6 +11,9 @@ process.chdir(
     }),
   }) as string
 );
+
+// parallelize tests, leaving one CPU to coordinate
+t.jobs = os.cpus().length - 1;
 
 t.test('cli', async (t) => {
   const { stderr, exitCode } = await run();
