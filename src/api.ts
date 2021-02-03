@@ -25,4 +25,5 @@ export async function run({
   const tree = await arb.loadVirtual().catch(() => arb.loadActual());
 
   return tree;
+  /* c8 ignore next */
 }
