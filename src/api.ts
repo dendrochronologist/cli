@@ -24,6 +24,8 @@ export async function run({
   });
   const tree = await arb.loadVirtual().catch(() => arb.loadActual());
 
+  logger.verbose('workspaces', '%O', tree.workspaces);
+
   return tree;
   /* c8 ignore next */
 }
