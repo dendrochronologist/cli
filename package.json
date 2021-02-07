@@ -31,6 +31,7 @@
     }
   },
   "files": [
+    "@types",
     "bin.js",
     "dist"
   ],
@@ -71,7 +72,6 @@
   },
   "devDependencies": {
     "@types/node": "^14.14.17",
-    "@types/npmcli__arborist": "file:@types/npmcli__arborist",
     "@types/npmlog": "^4.1.2",
     "@types/tap": "^14.10.1",
     "@types/yargs": "^16.0.0",
@@ -91,6 +91,7 @@
   },
   "dependencies": {
     "@npmcli/arborist": "^2.2.1",
+    "@types/npmcli__arborist": "file:@types/npmcli__arborist",
     "npmlog": "^4.1.2",
     "v8-compile-cache": "^2.2.0",
     "yargs": "^16.2.0"
