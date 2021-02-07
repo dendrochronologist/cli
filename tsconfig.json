@@ -29,6 +29,7 @@
     "target": "ES2019",
   },
   "include": [
+    "*.d.ts",
     "bin.js",
     "rollup.config.mjs",
     "src",
