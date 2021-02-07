@@ -1,12 +1,11 @@
 import { resolve } from 'path';
 import Arborist from '@npmcli/arborist';
 import { processLogger } from './process-logger';
-import type { MinimalLogger } from './process-logger';
 import type { ParsedConfig } from './cli';
-import type { Node } from '@npmcli/arborist';
+import type { Node, Logger } from '@npmcli/arborist';
 
 interface RunOptions extends Partial<ParsedConfig> {
-  logger?: MinimalLogger;
+  logger?: Logger;
 }
 
 export async function run({

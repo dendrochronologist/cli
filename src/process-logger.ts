@@ -1,13 +1,19 @@
-import type { Logger, LogLevels } from 'npmlog';
+import type { Logger } from '@npmcli/arborist';
+
+/** Level methods of the logger object. */
+type LogLevels =
+  | 'silly'
+  | 'verbose'
+  | 'info'
+  | 'timing'
+  | 'http'
+  | 'notice'
+  | 'warn'
+  | 'error'
+  | 'silent';
 
 /** Non-level methods of the logger object. */
 type LogMethods = 'pause' | 'resume';
-
-/**
- * A logger passed around to many npm utilities (pacote, arborist, &c).
- * By default, 'log' events are emitted on the `process` object.
- */
-export type MinimalLogger = Pick<Logger, LogLevels> & Pick<Logger, LogMethods>;
 
 /**
  * When the 'log' event originates from a non-level method
@@ -54,7 +60,7 @@ export const levels: ReadonlyArray<LogLevels> = [
 ] as const;
 
 export function processLogger() {
-  const logger = {} as MinimalLogger;
+  const logger = {} as Logger;
 
   for (const level of levels) {
     logger[level] = (prefix: string, message: string, ...args: unknown[]) => {

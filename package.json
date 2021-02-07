@@ -71,6 +71,7 @@
   },
   "devDependencies": {
     "@types/node": "^14.14.17",
+    "@types/npmcli__arborist": "file:@types/npmcli__arborist",
     "@types/npmlog": "^4.1.2",
     "@types/tap": "^14.10.1",
     "@types/yargs": "^16.0.0",
