@@ -5,7 +5,6 @@ type LogLevels =
   | 'silly'
   | 'verbose'
   | 'info'
-  | 'timing'
   | 'http'
   | 'notice'
   | 'warn'
@@ -51,7 +50,6 @@ export const levels: ReadonlyArray<LogLevels> = [
   'silly',
   'verbose',
   'info',
-  'timing',
   'http',
   'notice',
   'warn',

@@ -12,7 +12,6 @@ export interface Logger {
   silly(prefix: string, message: string, ...args: unknown[]): void;
   verbose(prefix: string, message: string, ...args: unknown[]): void;
   info(prefix: string, message: string, ...args: unknown[]): void;
-  timing(prefix: string, message: string, ...args: unknown[]): void;
   http(prefix: string, message: string, ...args: unknown[]): void;
   notice(prefix: string, message: string, ...args: unknown[]): void;
   warn(prefix: string, message: string, ...args: unknown[]): void;

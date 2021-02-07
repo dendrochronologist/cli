@@ -19,7 +19,6 @@ t.same(Object.keys(logger), [
   'silly',
   'verbose',
   'info',
-  'timing',
   'http',
   'notice',
   'warn',
